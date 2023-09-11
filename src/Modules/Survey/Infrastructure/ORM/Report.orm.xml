@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+    <entity name="App\Modules\Survey\Domain\Entity\Report" table="report">
+        <id name="id" type="uuid" column="id">
+            <generator strategy="CUSTOM"/>
+            <custom-id-generator class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator"/>
+        </id>
+        <field name="numberOfAnswers" column="number_of_answers" type="string" length="255" nullable="true"
+               unique="false"/>
+        <field name="quality" column="quality" type="string" length="32" nullable="true" unique="false"/>
+        <field name="comments" column="comments" type="json"/>
+        <field name="generatedAt" column="generated_at" type="datetime_immutable"/>
+        <field name="surveyId" column="survey_id" type="uuid"/>
+    </entity>
+</doctrine-mapping>

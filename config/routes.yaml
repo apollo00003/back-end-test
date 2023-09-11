@@ -1,1 +1,5 @@
-
+controllers:
+    resource:
+        path: ../src/Modules/Survey/Application/Controller/
+        namespace: App\Modules\Survey\Application\Controller
+    type: attribute

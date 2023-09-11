@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+    <entity name="App\Modules\Survey\Domain\Entity\Answer" table="answer">
+        <id name="id" type="uuid" column="id">
+            <generator strategy="CUSTOM"/>
+            <custom-id-generator class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator"/>
+        </id>
+        <field name="quality" column="quality" type="integer" nullable="false" unique="false"/>
+        <field name="comment" column="comment" type="text" nullable="false" unique="false"/>
+    </entity>
+</doctrine-mapping>

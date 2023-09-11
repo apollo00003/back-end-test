@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+    <entity name="App\Modules\Survey\Domain\Entity\Survey" table="survey">
+        <id name="id" type="uuid" column="id">
+            <generator strategy="CUSTOM"/>
+            <custom-id-generator class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator"/>
+        </id>
+        <field name="name" column="name" type="string" length="255" nullable="true" unique="false"/>
+        <field name="status" column="status" type="string" length="32" nullable="true" unique="false"/>
+        <field name="reportEmail" column="reportEmail" type="string" length="255" nullable="true" unique="false"/>
+        <many-to-many field="answers" target-entity="App\Modules\Survey\Domain\Entity\Answer">
+            <cascade>
+                <cascade-all />
+            </cascade>
+            <join-table name="survey_answer">
+                <join-columns>
+                    <join-column name="survey_id" referenced-column-name="id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="answer_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>
